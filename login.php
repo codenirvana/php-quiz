@@ -1,6 +1,7 @@
 <?php
    session_start();
-   require('inc/connect.php');
+   require('config.php');
+   require_once('inc/connect.php');
 
    //register
    if (isset($_POST['username']) && isset($_POST['password'])){
@@ -9,20 +10,42 @@
       $email = $_POST['email'];
       $password = $_POST['password'];
       $type = $_POST['type'];
-      $query = "INSERT INTO `users` (name, username, email, password, type) VALUES ('$name','$username', '$email','$password', '$type')";
-      $result = mysql_query($query);
-      if($result){
-           $msg = "User Created Successfully.";
+
+      //check if username exists
+      $sql="SELECT * FROM `users` where username=:uname";
+      $q = $db->prepare($sql);
+      $q->execute(array(':uname' => $username));
+      $result = $q->fetchAll();
+      if(count($result)){
+         $msg = "User exists!";
+      } else{
+         //insert data
+         $sql="INSERT INTO `users` (name, username, email, password, type) VALUES (:name, :username, :email, :password, :type)";
+         $q = $db->prepare($sql);
+         $q->execute(array(':name'=>$name,
+                           ':username'=>$username,
+                           ':email'=>$email,
+                           ':password'=>$password,
+                           ':type'=>$type
+         ));
+         if($q){
+            $msg = "User Created Successfully.";
+         } else{
+            $msg = "Error Creating new user, Try again later!";
+         }
       }
    }
 
    //login
    if (isset($_POST['uname']) and isset($_POST['pword'])){
-      $username = htmlspecialchars($_POST['uname']);
-      $password = htmlspecialchars($_POST['pword']);
-      $query = 'SELECT * FROM users WHERE username="'.$username.'" and password="'.$password.'"';
-      $result = mysql_query($query) or die(mysql_error());
-      $count = mysql_num_rows($result);
+      $username = $_POST['uname'];
+      $password = $_POST['pword'];
+
+      $sql = 'SELECT * FROM users WHERE username=:uname and password=:pword';
+      $q = $db->prepare($sql);
+      $q->execute(array(':uname'=>$username, ':pword'=>$password));
+      $result = $q->fetchAll();
+      $count = count($result);
       if ($count == 1){
          $_SESSION['username'] = $username;
       }else{
@@ -42,7 +65,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Login | Quiz System</title>
+      <title>Login | <?php echo $SITE_NAME ?></title>
    </head>
    <body>
       <div class="register-form">
@@ -67,19 +90,14 @@
          </form>
       </div>
 
-      <div class="register-form">
-         <?php
-         	if(isset($msg2) & !empty($msg2)){
-         		echo $msg2;
-         	}
-          ?>
+      <div class="login-form">
          <h1>Login</h1>
          <form action="" method="POST">
             <p><label>User Name : </label>
          	<input id="uname" type="text" name="uname" required placeholder="UserName" /></p>
             <p><label>Password : </label>
          	<input id="pword" type="password" name="pword" required placeholder="password" /></p>
-            <input type="submit" name="submit" value="Register" />
+            <input type="submit" name="submit" value="Login" />
          </form>
       </div>
    </body>

@@ -1,9 +1,11 @@
 <?php
-   $connection = mysql_connect('localhost', 'root', 'toor');
-   if (!$connection){
-       die("Database Connection Failed" . mysql_error());
-   }
-   $select_db = mysql_select_db('quiz');
-   if (!$select_db){
-       die("Database Selection Failed" . mysql_error());
-   }
+
+try{
+   $db = new PDO('mysql:host='.$DataBase_host.';dbname='.$DataBase_name, $DataBase_username, $DataBase_password);
+   $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+} catch(Exception $e){
+   echo $e->getMessage();
+   die();
+}
+
+?>
