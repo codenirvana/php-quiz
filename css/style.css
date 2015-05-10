@@ -1,4 +1,18 @@
+.clear {
+  clear: both; }
+
 body {
   background: #D8D8D8; }
+
+header h1 {
+  float: left;
+  margin: 0; }
+header nav {
+  float: right; }
+  header nav ul {
+    margin: 0; }
+    header nav ul li {
+      float: left;
+      margin: 0 10px; }
 
 /*# sourceMappingURL=style.css.map */
