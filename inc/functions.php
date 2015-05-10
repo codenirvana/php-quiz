@@ -66,4 +66,18 @@ function check_credentials($info){
    }
 }
 
+/*
+ * Total number of quizzes present
+ * count number of tables with quiz prefix '_'
+ * @return int    $count
+ */
+function total_quiz_tables(){
+   global $db; //from connect.php
+   $q = $db->prepare("SHOW TABLES WHERE TABLES_IN_quiz LIKE '\_%'");
+   $q->execute();
+   $result = $q->fetchAll();
+   $count = count($result);
+   return $count;
+}
+
 ?>
