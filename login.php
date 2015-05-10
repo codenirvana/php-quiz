@@ -4,29 +4,35 @@
    require('inc/connect.php');
    require('inc/functions.php');
 
-   //register
+   /*
+    * If posted information from register form
+    */
    if (isset($_POST['username']) && isset($_POST['password'])){
-      //check if username exists
       if( if_user_exists($_POST['username']) ){
-         $msg = "User exists!";
+         $msg = "User Name '".$_POST['username']."' already exists!";
       } else{
-         //insert data
          $q = add_new_user($_POST);
          if($q){
-            $msg = "User Created Successfully.";
+            $msg = "Registered Successfully, Please Login";
          } else{
-            $msg = "Error Creating new user, Try again later!";
+            $msg = "Error registering new user, Try again later!";
          }
       }
    }
 
-   //login
+   /*
+    * If posted information from login form
+    */
    if (isset($_POST['uname']) and isset($_POST['pword'])){
       if (check_credentials($_POST)){
+         /*
+          * set $_SESSION variable
+          * redirect to home.php
+          */
          $_SESSION['username'] = $_POST['uname'];
          header('Location: home.php');
       }else{
-         echo "Invalid Login Credentials.";
+         $msg = "Invalid Login Credentials.";
       }
    }
 ?>
@@ -36,12 +42,10 @@
       <title>Login | <?php echo $SITE_NAME ?></title>
    </head>
    <body>
+      <p class="info-msg">
+         <?php if(isset($msg) & !empty($msg)) echo $msg; ?>
+      </p>
       <div class="register-form">
-         <?php
-         	if(isset($msg) & !empty($msg)){
-         		echo $msg;
-         	}
-          ?>
          <h1>Register</h1>
          <form action="" method="POST">
             <p><label>Name : </label>
