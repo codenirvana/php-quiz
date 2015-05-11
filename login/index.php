@@ -1,9 +1,11 @@
 <?php
+   require_once(__DIR__ ."/../config.php");
+
    session_start();
 
    $PAGE_TITLE = "Login";
 
-   require('inc/header.php');
+   include(ROOT_PATH.'inc/header.php');
 
    $msg = "Register or Login for quiz!";
 
@@ -28,21 +30,18 @@
     */
    if (isset($_POST['submit2'])){
       if (check_credentials($_POST)){
-         $_SESSION['username'] = $_POST['uname'];
-         $_SESSION['start'] = time(); // Taking now logged in time.
-         // Ending a session in 30 minutes from the starting time.
-         $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
+         start_session($_POST['uname']);
       }else{
          $msg = "Invalid Login Credentials.";
       }
    }
 
    /*
-    * If user is loged-in
+    * If user is logged-in
     * redirect to home.php
     */
     if(isset($_SESSION['username'])){
-      header('Location: home.php');
+      header('Location: '.BASE_URL.'quiz');
    }
 ?>
 
@@ -78,4 +77,4 @@
    </form>
 </div>
 
-<?php require('inc/footer.php'); ?>
+<?php include(ROOT_PATH.'inc/footer.php'); ?>

@@ -1,9 +1,10 @@
 <?php
+   require_once(__DIR__ ."/../config.php");
    session_start();
 
    $PAGE_TITLE = "Take Quiz";
 
-   require('inc/header.php');
+   include(ROOT_PATH.'inc/header.php');
 
    if (isset($_SESSION['username'])){
       $username = $_SESSION['username'];
@@ -11,7 +12,7 @@
       if ($now > $_SESSION['expire']) {
          echo "<script>
                   alert('Your session has expired, Please Login!');
-                  window.location.href='logout.php';
+                  window.location.href='".BASE_URL."logout.php';
                </script>";
       }
 ?>
@@ -19,7 +20,7 @@
 <div class="main">
    <?php
       echo "Hello $username";
-      echo "<a href='logout.php'>Logout</a>";
+      echo "<a href='".BASE_URL."logout.php'>Logout</a>";
    ?>
 </div>
 
@@ -27,8 +28,8 @@
 
    } else{
       echo "You must be login!";
-      echo "<a href='login.php'>Login</a>";
+      echo "<a href='".BASE_URL."login'>Login</a>";
    }
 
-   require('inc/footer.php');
+   include(ROOT_PATH.'inc/footer.php');
 ?>

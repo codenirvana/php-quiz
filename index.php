@@ -1,11 +1,12 @@
 <?php
+   require_once("config.php");
 
    $PAGE_TITLE = "Home";
 
-   require('inc/header.php');
+   include(ROOT_PATH.'inc/header.php');
 ?>
 
 
 <h3>Total Quizzes: <?php echo total_quiz_tables(); ?></h3>
 
-<?php require('inc/footer.php'); ?>
+<?php include(ROOT_PATH.'inc/footer.php'); ?>

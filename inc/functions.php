@@ -80,4 +80,15 @@ function total_quiz_tables(){
    return $count;
 }
 
-?>
+/*
+ * Start a new session for user logged in,
+ * Also set expire for session:
+ *    store START time()
+ *    set EXPIRE time of 30 minutes from START time
+ * @param   string   $username
+ */
+function start_session($username){
+   $_SESSION['username'] =$username;
+   $_SESSION['start'] = time();
+   $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
+}
