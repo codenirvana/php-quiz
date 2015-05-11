@@ -10,7 +10,7 @@
    /*
     * If posted information from register form
     */
-   if (isset($_POST['username']) && isset($_POST['password'])){
+   if (isset($_POST['submit1'])){
       if( if_user_exists($_POST['username']) ){
          $msg = "User Name '".$_POST['username']."' already exists!";
       } else{
@@ -26,9 +26,12 @@
    /*
     * If posted information from login form
     */
-   if (isset($_POST['uname']) and isset($_POST['pword'])){
+   if (isset($_POST['submit2'])){
       if (check_credentials($_POST)){
          $_SESSION['username'] = $_POST['uname'];
+         $_SESSION['start'] = time(); // Taking now logged in time.
+         // Ending a session in 30 minutes from the starting time.
+         $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
       }else{
          $msg = "Invalid Login Credentials.";
       }
@@ -60,7 +63,7 @@
    	<input id="password" type="password" name="password" required placeholder="password" /></p>
       <p><label>Type : </label>
    	<input id="type" type="text" name="type" required placeholder="2/3" /></p>
-      <input type="submit" name="submit" value="Register" />
+      <input type="submit" name="submit1" value="Register" />
    </form>
 </div>
 
@@ -71,7 +74,7 @@
    	<input id="uname" type="text" name="uname" required placeholder="UserName" /></p>
       <p><label>Password : </label>
    	<input id="pword" type="password" name="pword" required placeholder="password" /></p>
-      <input type="submit" name="submit" value="Login" />
+      <input type="submit" name="submit2" value="Login" />
    </form>
 </div>
 

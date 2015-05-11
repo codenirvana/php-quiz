@@ -23,4 +23,4 @@ require('functions.php');
             </ul>
          </nav>
       </header>
-      <div class='clear'/>
+      <div class='clear'></div>
