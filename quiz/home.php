@@ -6,15 +6,7 @@
 
    include(ROOT_PATH.'inc/header.php');
 
-   if (isset($_SESSION['username'])){
-      $username = $_SESSION['username'];
-      $now = time();
-      if ($now > $_SESSION['expire']) {
-         echo "<script>
-                  alert('Your session has expired, Please Login!');
-                  window.location.href='".BASE_URL."logout.php';
-               </script>";
-      }
+   if (isset($username)){
 ?>
 
 <div class="main">

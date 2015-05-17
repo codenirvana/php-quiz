@@ -82,13 +82,28 @@ function total_quiz_tables(){
 
 /*
  * Start a new session for user logged in,
- * Also set expire for session:
  *    store START time()
- *    set EXPIRE time of 30 minutes from START time
  * @param   string   $username
  */
 function start_session($username){
    $_SESSION['username'] =$username;
-   $_SESSION['start'] = time();
-   $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
+   $_SESSION['ac_time'] = time();
+}
+
+/*
+ * Check session exist
+ * compare current time with last access time
+ *   if > 300 (5min.) expire session
+ *   else update access time
+ */
+function check_session(){
+   $time = time();
+   if($time-$_SESSION['ac_time']>300){
+      echo "<script>
+               alert('Your session has expired, Please Login!');
+               window.location.href='".BASE_URL."logout.php';
+            </script>";
+   } else{
+      $_SESSION['ac_time'] = $time;
+   }
 }

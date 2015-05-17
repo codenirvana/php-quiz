@@ -24,3 +24,10 @@ require_once('functions.php');
          </nav>
       </header>
       <div class='clear'></div>
+<?php
+   //check if session exist
+   if (isset($_SESSION['username'])){
+      $username = $_SESSION['username'];
+      check_session();
+   }
+?>
