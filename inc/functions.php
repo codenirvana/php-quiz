@@ -26,20 +26,28 @@ function if_user_exists($username){
  */
 function add_new_user($info){
    global $db; //from connect.php
-   $name = $info['name'];
    $username = $info['username'];
    $email = $info['email'];
    $password = $info['password'];
+   $question = $info['question'];
+   $answer = $info['answer'];
    $type = $info['type'];
 
-   $sql="INSERT INTO `users` (name, username, email, password, type) VALUES (:name, :username, :email, :password, :type)";
+   $sql="INSERT INTO `users` (username, email, password, forQ, forA) VALUES (:username, :email, :password, :forQ, :forA)";
    $q = $db->prepare($sql);
-   $q->execute(array(':name'=>$name,
-                     ':username'=>$username,
+   $q->execute(array(':username'=>$username,
                      ':email'=>$email,
                      ':password'=>$password,
+                     ':forQ'=>$question,
+                     ':forA'=>$answer
+   ));
+
+   $sql="INSERT INTO `users_details` (username, type) VALUES (:username, :type)";
+   $q = $db->prepare($sql);
+   $q->execute(array(':username'=>$username,
                      ':type'=>$type
    ));
+
    return $q;
 }
 
@@ -64,6 +72,26 @@ function check_credentials($info){
    } else{
       return false;
    }
+}
+
+/*
+ * recover password based on security question and answer provided by user
+ * @param   array    $info    actually $_POST
+ * @return  string   password 'from users table'
+ */
+function recover_password($info){
+   global $db; //from connect.php
+   $username = $info['username'];
+   $question = $info['question'];
+   $answer = $info['answer'];
+
+   $sql="SELECT password from `users` WHERE forQ=:forQ AND forA=:forA";
+   $q = $db->prepare($sql);
+   $q->execute(array(':forQ'=>$question,
+                     ':forA'=>$answer
+   ));
+   $pwd = $q->fetch(PDO::FETCH_ASSOC);
+   return $pwd['password'];
 }
 
 /*

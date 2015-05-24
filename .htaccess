@@ -1,3 +1,4 @@
 RewriteEngine on
 RewriteBase /
 RewriteRule ^quiz/$ php-quiz/quiz/home.php
+RewriteRule ^help/forgot$ php-quiz/help/forgot.php

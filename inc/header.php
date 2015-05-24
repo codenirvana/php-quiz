@@ -1,7 +1,15 @@
 <?php
+session_start();
+
 require_once(__DIR__ ."/../config.php");
 require_once('connect.php');
 require_once('functions.php');
+
+//check if session exist
+if (isset($_SESSION['username'])){
+   $username = $_SESSION['username'];
+   check_session();
+}
 
 ?>
 <!DOCTYPE html>
@@ -19,15 +27,12 @@ require_once('functions.php');
                <li><a href="<?php echo BASE_URL ?>">Home</a></li>
                <li><a href="<?php echo BASE_URL ?>quiz">Quiz</a></li>
                <li><a href="<?php echo BASE_URL ?>about">About</a></li>
-               <li><a href="<?php echo BASE_URL ?>login">Login</a></li>
+               <li>
+                  <a href="<?php if(isset($username)) echo BASE_URL.'logout.php'; else echo BASE_URL.'login'; ?>">
+                     <?php if(isset($username)) echo 'Logout'; else echo 'Login'; ?>
+                  </a>
+               </li>
             </ul>
          </nav>
       </header>
       <div class='clear'></div>
-<?php
-   //check if session exist
-   if (isset($_SESSION['username'])){
-      $username = $_SESSION['username'];
-      check_session();
-   }
-?>
