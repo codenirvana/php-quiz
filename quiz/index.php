@@ -6,12 +6,18 @@
    include(ROOT_PATH.'inc/header.php');
 
    if (isset($username)){
+      reset_quiz_session_variables();
 ?>
 
 <div class="main">
+   <h3>Take a quiz</h3>
    <?php
-      echo "Hello $username";
-      echo "<a href='".BASE_URL."logout.php'>Logout</a>";
+      $links = get_quiz_links();
+      foreach ($links as $link) {
+         $link_name = str_replace("-"," ",$link);
+         echo "<a href='".BASE_URL."quiz/d/$link'>".$link_name."</a>";
+         echo "<br>";
+      }
    ?>
 </div>
 

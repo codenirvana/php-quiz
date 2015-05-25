@@ -1,4 +1,10 @@
 RewriteEngine on
 RewriteBase /
-RewriteRule ^quiz/$ php-quiz/quiz/home.php
 RewriteRule ^help/forgot$ php-quiz/help/forgot.php
+RewriteRule ^quiz/result$ php-quiz/quiz/result.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^quiz/d/(.*)$ php-quiz/quiz/d/?q=$1
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^quiz/(.*)$ php-quiz/quiz/quiz.php?q=$1

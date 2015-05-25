@@ -30,6 +30,7 @@
    if (isset($_POST['submit2'])){
       if (check_credentials($_POST)){
          start_session($_POST['uname']);
+         header('Location: '.BASE_URL.'quiz');
       }else{
          $msg = "Invalid Login Credentials.";
       }
