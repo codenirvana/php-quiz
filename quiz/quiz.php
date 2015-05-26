@@ -8,6 +8,11 @@
    }
 
    include(ROOT_PATH.'inc/header.php');
+?>
+
+<div id="main-wrapper" class="container">
+   <?php
+   echo "<h3>Quiz: ".strtoupper(str_replace("-"," ",$quiz_name))."</h3>";
 
    if (isset($username)){
       if(!isset($_SESSION['quiz-started']) OR empty($_SESSION['quiz-started']) OR $_SESSION['quiz-started']!=$quiz_name)
@@ -36,12 +41,7 @@
       if($_SESSION['question-index']>=$_SESSION['questions']){
          header('Location: '.BASE_URL.'quiz/result');
       }
-
-?>
-
-<div class="main">
-   <h3>Quiz Started</h3>
-
+   ?>
    <form class="quiz-test" method="post">
       <p>
          <b> <?php echo $quiz_data['question'] ?></b>
@@ -54,16 +54,15 @@
             }
          ?>
       </p>
-      <input type="submit" name="submit" value="next">
+      <input class="waves-effect waves-light btn blue-grey" type="submit" name="submit" value="next">
    </form>
-</div>
 
 <?php
-
    } else{
       echo "You must be login!";
       echo "<a href='".BASE_URL."login'>Login</a>";
    }
-
-   include(ROOT_PATH.'inc/footer.php');
 ?>
+
+</div> <!-- main-wrapper ends -->
+<?php include(ROOT_PATH.'inc/footer.php'); ?>

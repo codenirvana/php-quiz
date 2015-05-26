@@ -40,6 +40,10 @@ form input[type="submit"] {
 #main-wrapper {
   min-height: 80vh; }
 
+.quiz-name {
+  font-size: 1.3em;
+  text-transform: capitalize; }
+
 .page-footer {
   margin: 0 !important;
   padding-bottom: 10px;
