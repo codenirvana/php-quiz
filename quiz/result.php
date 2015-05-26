@@ -1,6 +1,8 @@
 <?php
    require_once(__DIR__ ."/../config.php");
 
+   $PAGE_TITLE = 'Result';
+
    include(ROOT_PATH.'inc/header.php');
 
    if($_SESSION['question-index']<$_SESSION['questions'] OR $_SESSION['questions']==0) header('Location: '.BASE_URL.'quiz');

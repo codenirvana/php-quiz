@@ -49,7 +49,8 @@
       <p>
          <?php
             for($i=0;$i<$quiz_data['options'];$i++){
-               echo '<input type="radio" name="answer" value='.$quiz_data['a'.($i+1)].'>'.$quiz_data['a'.($i+1)].'</input><br/>';
+               echo '<input type="radio" name="answer" value='.$quiz_data['a'.($i+1)].' id="ans'.$i.'"/>'.
+               '<label for="ans'.$i.'">'.$quiz_data['a'.($i+1)].'</label><br/>';
             }
          ?>
       </p>
