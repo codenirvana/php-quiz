@@ -16,8 +16,10 @@ if (isset($_SESSION['username'])){
 <html>
    <head>
       <title><?php echo $PAGE_TITLE." | ".$SITE_NAME ?></title>
-      <link rel="stylesheet" href="<?php echo BASE_URL ?>css/style.css" media="screen"/>
-      <link rel="stylesheet" href="<?php echo BASE_URL ?>css/normalize.css" media="screen"/>
+
+      <link type="text/css" rel="stylesheet" href="<?php echo BASE_URL ?>css/materialize.min.css"  media="screen,projection"/>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
    </head>
    <body>
       <header>
