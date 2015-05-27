@@ -6,7 +6,7 @@
    $SITE_NAME="QUIZ System";
 
    //DataBase Information
-   $DataBase_name = 'quiz';
-   $DataBase_host = 'localhost';
-   $DataBase_username = 'root';
-   $DataBase_password = 'toor';
+   define('DB_NAME','quiz');
+   define('DB_HOST','localhost');
+   define('DB_USERNAME','root');
+   define('DB_PASSWORD','toor');

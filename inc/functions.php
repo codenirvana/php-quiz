@@ -140,7 +140,7 @@ function reset_quiz_session_variables(){
  */
 function total_quiz_tables(){
    global $db; //from connect.php
-   $q = $db->prepare("SELECT name FROM quiz.`-quiz_details` WHERE status=1");
+   $q = $db->prepare("SELECT name FROM ".DB_NAME.".`-quiz_details` WHERE status=1");
    $q->execute();
    $result = $q->fetchAll();
    $count = count($result);
@@ -154,7 +154,7 @@ function total_quiz_tables(){
  */
 function get_quiz_links(){
    global $db; //from connect.php
-   $q = $db->prepare("SELECT name FROM quiz.`-quiz_details` WHERE status=1");
+   $q = $db->prepare("SELECT name FROM ".DB_NAME.".`-quiz_details` WHERE status=1");
    $q->execute();
    $rows = $q->fetchAll(PDO::FETCH_COLUMN);
    $result = array();
@@ -173,7 +173,7 @@ function get_quiz_links(){
 function quiz_details($quiz_name){
    global $db; //from connect.php
    $quiz_name = '_'.$quiz_name;
-   $q = $db->prepare("SELECT * FROM quiz.`-quiz_details` WHERE name=:quizName");
+   $q = $db->prepare("SELECT * FROM ".DB_NAME.".`-quiz_details` WHERE name=:quizName");
    $q->execute(array(':quizName'=>$quiz_name));
    $rows = $q->fetch(PDO::FETCH_ASSOC);
    //if quiz not ready
@@ -208,7 +208,7 @@ function quiz_details($quiz_name){
 function quiz_data($quiz_name,$index){
    global $db; //from connect.php
    $quiz_name = '_'.$quiz_name;
-   $q = $db->prepare("SELECT * FROM quiz.".$quiz_name." LIMIT ".$index.",".($index+1));
+   $q = $db->prepare("SELECT * FROM ".DB_NAME.".".$quiz_name." LIMIT ".$index.",".($index+1));
    $q->execute();
    $row = $q->fetch(PDO::FETCH_ASSOC);
    if(empty($row)) return false;
