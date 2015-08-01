@@ -4,10 +4,10 @@
       $quiz_name = $_GET['q'];
       $PAGE_TITLE = str_replace("-"," ",$quiz_name).' Quiz';
    } else{
-      header('Location: '.BASE_URL.'quiz');
+      header('Location: /quiz');
    }
 
-   include(ROOT_PATH.'inc/header.php');
+   include(ROOT_PATH.'/inc/header.php');
 ?>
 
 <div id="main-wrapper" class="container">
@@ -16,7 +16,7 @@
 
    if (isset($username)){
       if(!isset($_SESSION['quiz-started']) OR empty($_SESSION['quiz-started']) OR $_SESSION['quiz-started']!=$quiz_name)
-         header('Location: '.BASE_URL.'quiz');
+         header('Location: /quiz');
 
       //if form posted
       if(isset($_POST['submit'])){
@@ -24,14 +24,14 @@
          if($_POST['answer']==$_SESSION['answer']) $_SESSION['correct']++;
 
          $_SESSION['question-index']++;
-         header('Location: '.BASE_URL.'quiz/'.$quiz_name);
+         header('Location: /quiz/'.$quiz_name);
       }
 
       //get data related to quiz
       $quiz_data = quiz_data($quiz_name,$_SESSION['question-index']);
 
       if($quiz_data==false){
-          header('Location: '.BASE_URL.'quiz');
+          header('Location: /quiz');
       } else{
          //store answer for current question
          $_SESSION['answer'] = $quiz_data['a1'];
@@ -39,7 +39,7 @@
 
       //quiz ended, show the result
       if($_SESSION['question-index']>=$_SESSION['questions']){
-         header('Location: '.BASE_URL.'quiz/result');
+         header('Location: /quiz/result');
       }
    ?>
    <form class="quiz-test" method="post">
@@ -60,9 +60,9 @@
 <?php
    } else{
       echo "You must be login!";
-      echo "<a href='".BASE_URL."login'>Login</a>";
+      echo "<a href='/login'>Login</a>";
    }
 ?>
 
 </div> <!-- main-wrapper ends -->
-<?php include(ROOT_PATH.'inc/footer.php'); ?>
+<?php include(ROOT_PATH.'/inc/footer.php'); ?>

@@ -4,10 +4,10 @@
       $quiz_name = $_GET['q'];
       $PAGE_TITLE = str_replace("-"," ",$quiz_name).' Details';
    } else{
-      header('Location: '.BASE_URL.'quiz');
+      header('Location: /quiz');
    }
 
-   include(ROOT_PATH.'inc/header.php');
+   include(ROOT_PATH.'/inc/header.php');
 ?>
 <div id="main-wrapper" class="container">
    <h3>Quiz Details</h3>
@@ -17,7 +17,7 @@
       reset_quiz_session_variables();
 
       $details = quiz_details($quiz_name);
-      if($details==false) header('Location: '.BASE_URL.'quiz');
+      if($details==false) header('Location: /quiz');
 
       //if form submited
       if(isset($_POST['submit'])){
@@ -25,7 +25,7 @@
          $_SESSION['question-index']=0;
          $_SESSION['questions']=$details["questions"];
          $_SESSION['correct']=0;
-         header('Location: '.BASE_URL.'quiz/'.$quiz_name);
+         header('Location: /quiz/'.$quiz_name);
       }
    ?>
    <p><b>Name:</b> <?php echo $details["name"] ?></p>
@@ -40,9 +40,9 @@
 <?php
    } else{
       echo "You must be login!";
-      echo "<a href='".BASE_URL."login'>Login</a>";
+      echo "<a href='/login'>Login</a>";
    }
 ?>
 
 </div> <!-- main-wrapper ends -->
-<?php include(ROOT_PATH.'inc/footer.php'); ?>
+<?php include(ROOT_PATH.'/inc/footer.php'); ?>

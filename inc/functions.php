@@ -115,7 +115,7 @@ function check_session(){
    if($time-$_SESSION['ac_time']>300){
       echo "<script>
                alert('Your session has expired, Please Login!');
-               window.location.href='".BASE_URL."logout.php';
+               window.location.href='/logout.php';
             </script>";
    } else{
       $_SESSION['ac_time'] = $time;

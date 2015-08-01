@@ -1,7 +1,6 @@
 <?php
 
-   define("BASE_URL","/");
-   define("ROOT_PATH",$_SERVER['DOCUMENT_ROOT'].BASE_URL);
+   define("ROOT_PATH",$_SERVER['DOCUMENT_ROOT']);
 
    $SITE_NAME="QUIZ System";
 

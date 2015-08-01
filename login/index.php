@@ -4,7 +4,7 @@
 
    $PAGE_TITLE = "Login";
 
-   include(ROOT_PATH.'inc/header.php');
+   include(ROOT_PATH.'/inc/header.php');
 
    $msg = "";
 
@@ -30,7 +30,7 @@
    if (isset($_POST['submit2'])){
       if (check_credentials($_POST)){
          start_session($_POST['uname']);
-         header('Location: '.BASE_URL.'quiz');
+         header('Location: /quiz');
       }else{
          $msg = "Invalid Login Credentials.";
       }
@@ -41,7 +41,7 @@
     * redirect to home.php
     */
     if(isset($username)){
-      header('Location: '.BASE_URL.'quiz');
+      header('Location: /quiz');
    }
 ?>
 <div id="main-wrapper" class="container">
@@ -122,7 +122,7 @@
                   <p>
                      <b>Lost Password?</b><br>
                      Don't worry we will help recovering your password<br><br>
-                     <a class="col m5 s12 waves-effect waves-light btn blue-grey" href="<?php echo BASE_URL ?>help/forgot">Recover Now</a>
+                     <a class="col m5 s12 waves-effect waves-light btn blue-grey" href="/help/forgot">Recover Now</a>
                   </p>
                </div>
             </div>
@@ -131,4 +131,4 @@
     </ul>
 
 </div> <!-- main-wrapper ends -->
-<?php include(ROOT_PATH.'inc/footer.php'); ?>
+<?php include(ROOT_PATH.'/inc/footer.php'); ?>
