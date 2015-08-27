@@ -12,8 +12,6 @@
 <div id="main-wrapper" class="container">
    <h3>Quiz Details</h3>
    <?php
-   if (isset($username)){
-
       reset_quiz_session_variables();
 
       $details = quiz_details($quiz_name);
@@ -36,13 +34,6 @@
    <form method="post">
       <input class="waves-effect waves-light btn blue-grey" type="submit" name="submit" value="Start">
    </form>
-
-<?php
-   } else{
-      echo "You must be login!";
-      echo "<a href='/login'>Login</a>";
-   }
-?>
 
 </div> <!-- main-wrapper ends -->
 <?php include(ROOT_PATH.'/inc/footer.php'); ?>

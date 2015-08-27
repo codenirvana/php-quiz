@@ -1,7 +1,6 @@
 <?php
    require_once(__DIR__ ."/../config.php");
 
-
    $PAGE_TITLE = "Login";
 
    include(ROOT_PATH.'/inc/header.php');
@@ -30,7 +29,7 @@
    if (isset($_POST['submit2'])){
       if (check_credentials($_POST)){
          start_session($_POST['uname']);
-         header('Location: /quiz');
+         header('Location: /admin');
       }else{
          $msg = "Invalid Login Credentials.";
       }
@@ -41,7 +40,7 @@
     * redirect to home.php
     */
     if(isset($username)){
-      header('Location: /quiz');
+      header('Location: /admin');
    }
 ?>
 <div id="main-wrapper" class="container">

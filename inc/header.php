@@ -31,7 +31,13 @@ if (isset($_SESSION['username'])){
                   <svg pointer-events='none' style='vertical-align: middle;' viewBox='0 0 48 48' width='2.7em' xmlns='http://www.w3.org/2000/svg'><path d='M6 36h36v-4H6v4zm0-10h36v-4H6v4zm0-14v4h36v-4H6z'></path></svg>
                </a>
                <ul class="right hide-on-med-and-down">
-                  <li><a href="/">Home</a></li>
+                  <?php
+                    if(isset($username)){
+                        echo "<li><a href='/admin'>Admin</a></li>";
+                    } else{
+                        echo "<li><a href='/''>Home</a></li>";
+                    }
+                  ?>
                   <li><a href="/quiz">Quiz</a></li>
                   <li><a href="/about">About</a></li>
                   <li>

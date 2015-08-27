@@ -12,9 +12,8 @@
 
 <div id="main-wrapper" class="container">
    <?php
-   echo "<h3>Quiz: ".strtoupper(str_replace("-"," ",$quiz_name))."</h3>";
+      echo "<h3>Quiz: ".strtoupper(str_replace("-"," ",$quiz_name))."</h3>";
 
-   if (isset($username)){
       if(!isset($_SESSION['quiz-started']) OR empty($_SESSION['quiz-started']) OR $_SESSION['quiz-started']!=$quiz_name)
          header('Location: /quiz');
 
@@ -56,13 +55,6 @@
       </p>
       <input class="waves-effect waves-light btn blue-grey" type="submit" name="submit" value="next">
    </form>
-
-<?php
-   } else{
-      echo "You must be login!";
-      echo "<a href='/login'>Login</a>";
-   }
-?>
 
 </div> <!-- main-wrapper ends -->
 <?php include(ROOT_PATH.'/inc/footer.php'); ?>

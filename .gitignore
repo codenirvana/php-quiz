@@ -1,2 +1,9 @@
 .sass-cache
 *.css.map
+
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+# Thumbnails
+._*
