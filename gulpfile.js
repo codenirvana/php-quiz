@@ -44,6 +44,8 @@ gulp.task('compileJS', function(){
 */
 gulp.task('deploy', function () {
     gulp.src(['./src/**/*']).pipe(gulp.dest(deployPath));
+    //fix for .htaccess
+    gulp.src(['./src/.htaccess']).pipe(gulp.dest(deployPath));
 });
 
 /*

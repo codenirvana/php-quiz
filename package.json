@@ -11,7 +11,7 @@
     "url": "git+https://github.com/codenirvana/php-quiz.git"
   },
   "author": "Udit Vasu",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/codenirvana/php-quiz/issues"
   },
