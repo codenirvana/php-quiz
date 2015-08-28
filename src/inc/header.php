@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-//require_once(__DIR__ ."/../config.php");
 require_once('connect.php');
 require_once('functions.php');
 
@@ -17,7 +16,6 @@ if (isset($_SESSION['username'])){
    <head>
       <title> <?php echo $PAGE_TITLE." | ".$SITE_NAME ?></title>
 
-      <link type="text/css" rel="stylesheet" href="/assets/css/materialize.min.css"  media="screen,projection"/>
       <link type="text/css" rel="stylesheet" href="/assets/css/style.css"  media="screen,projection"/>
 
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>

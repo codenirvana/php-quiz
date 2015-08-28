@@ -18,7 +18,7 @@
       ?>
 
       <h5 class="grey-text text-darken-3">Total Quizzes: <?php echo total_quiz_tables(); ?></h5><br>
-      <a href="/login" class="waves-effect waves-light btn-large blue-grey darken-2">Start</a>
+      <a href="/quiz" class="waves-effect waves-light btn-large blue-grey darken-2">Start</a>
 
    </div>
    <div class="parallax"><img src="/assets/img/parallax.jpg"></div>
