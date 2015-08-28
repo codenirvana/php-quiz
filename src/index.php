@@ -21,7 +21,7 @@
       <a href="/login" class="waves-effect waves-light btn-large blue-grey darken-2">Start</a>
 
    </div>
-   <div class="parallax"><img src="/img/parallax.jpg"></div>
+   <div class="parallax"><img src="/assets/img/parallax.jpg"></div>
 </div>
 
 <?php include(ROOT_PATH.'/inc/footer.php'); ?>
