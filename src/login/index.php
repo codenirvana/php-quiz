@@ -5,7 +5,7 @@
 
    include(ROOT_PATH.'/inc/header.php');
 
-   $msg = "";
+   $msg = "Admin/Organizer Login";
 
    /*
     * If posted information from register form
