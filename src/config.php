@@ -2,7 +2,7 @@
 
    define("ROOT_PATH",$_SERVER['DOCUMENT_ROOT']);
 
-   $SITE_NAME="QUIZ System";
+   $SITE_NAME="Lets Quiz";
 
    //DataBase Information
    define('DB_NAME','quiz');

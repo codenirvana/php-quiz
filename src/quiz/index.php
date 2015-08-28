@@ -8,7 +8,6 @@
 <div id="main-wrapper" class="container">
    <h3>Take a quiz</h3>
    <?php
-   if (isset($username)){
       reset_quiz_session_variables();
 
       $links = get_quiz_links();
@@ -18,11 +17,5 @@
          echo "<br>";
       }
    ?>
-
-<?php
-   } else{
-      echo "You must be <a href='/login'>Login</a>";
-   }
-?>
 </div> <!-- main-wrapper ends -->
 <?php include(ROOT_PATH.'/inc/footer.php'); ?>

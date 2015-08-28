@@ -1,2 +1,12 @@
 .sass-cache
 *.css.map
+
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+# Thumbnails
+._*
+
+node_modules/
+npm-debug.log

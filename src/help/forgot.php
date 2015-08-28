@@ -1,10 +1,9 @@
 <?php
    require_once(__DIR__ ."/../config.php");
 
-
    $PAGE_TITLE = "Forgot Password";
 
-   include(ROOT_PATH.'inc/header.php');
+   include(ROOT_PATH.'/inc/header.php');
 
    $msg = "Please fill out the form below";
 
@@ -56,4 +55,4 @@
    </div>
 </div>
 
-<?php include(ROOT_PATH.'inc/footer.php'); ?>
+<?php include(ROOT_PATH.'/inc/footer.php'); ?>
