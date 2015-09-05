@@ -86,8 +86,8 @@
                           <label for="email">Email</label>
                      </div>
                      <div class="input-field col s12">
-                  	     <input id="password" type="password" name="password" required placeholder="password" />
-                          <label for="password">Password</label>
+                  	     <input id="password" type="password" name="password" required />
+                         <label for="password">Password</label>
                      </div>
                      <div class="input-field col s12">
                         <label>Security Question</label><br>

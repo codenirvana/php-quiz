@@ -10,3 +10,6 @@
 
 node_modules/
 npm-debug.log
+
+src/assets/css/
+src/assets/js/
