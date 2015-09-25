@@ -23,16 +23,16 @@ To get started with this project, you'll need the following things installed on 
 
 ## Deployment
 
-Make sure you have Virtual Hosts set up in Apache because path like *localhost/php-quiz* will not work!
+Make sure you have Virtual Hosts set up in Apache because path like ```localhost/php-quiz``` will not work!
 
-Now open *gulpfile.js* and change 
+Now open ```gulpfile.js``` and change
 
 1. **deployPath** variable to your localhost root ```line: 10```
 2. **browserSync proxy target** with your virtual host link ```line: 57```
 
 ## Usage
 
-One you set up everything inside directory, run
+Once you set up everything inside directory, run
 
 ```shell
 $ gulp
