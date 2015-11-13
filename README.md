@@ -2,7 +2,7 @@
 ![](https://img.shields.io/badge/php-5.5-blue.svg?style=flat-square) 
 ![](https://img.shields.io/badge/npm-2.12-brightgreen.svg?style=flat-square)  ![](https://img.shields.io/badge/gulp-3.9-red.svg?style=flat-square)
 
-Simple Quiz Conducting System.
+PHP Quiz Conducting System.
 
 **Deployed at Azure:** [Here](http://php-quiz.azurewebsites.net/)
 
